@@ -1,0 +1,14 @@
+# Version 1: Simple app
+FROM ubuntu:latest
+
+# Install a simple web server
+RUN apt-get update && apt-get install -y apache2
+
+# Create a basic HTML file for the server
+RUN echo "<html><body><h1>Welcome to Version 1</h1></body></html>" > /var/www/html/index.html
+
+# Expose port 80
+EXPOSE 80
+
+# Start the web server
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
